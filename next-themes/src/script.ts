@@ -1,4 +1,4 @@
-export const script = (
+export const scriptFn = `(
   attribute,
   storageKey,
   defaultTheme,
@@ -6,17 +6,18 @@ export const script = (
   themes,
   value,
   enableSystem,
-  enableColorScheme
+  enableColorScheme,
 ) => {
   const el = document.documentElement
-  const systemThemes = ['light', 'dark']
+  const systemThemes = ["light", "dark"]
 
-  function updateDOM(theme: string) {
+  function updateDOM(theme) {
     const attributes = Array.isArray(attribute) ? attribute : [attribute]
 
-    attributes.forEach(attr => {
-      const isClass = attr === 'class'
-      const classes = isClass && value ? themes.map(t => value[t] || t) : themes
+    attributes.forEach((attr) => {
+      const isClass = attr === "class"
+      const classes =
+        isClass && value ? themes.map((t) => value[t] || t) : themes
       if (isClass) {
         el.classList.remove(...classes)
         el.classList.add(value && value[theme] ? value[theme] : theme)
@@ -28,14 +29,16 @@ export const script = (
     setColorScheme(theme)
   }
 
-  function setColorScheme(theme: string) {
+  function setColorScheme(theme) {
     if (enableColorScheme && systemThemes.includes(theme)) {
       el.style.colorScheme = theme
     }
   }
 
   function getSystemTheme() {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light"
   }
 
   if (forcedTheme) {
@@ -43,11 +46,11 @@ export const script = (
   } else {
     try {
       const themeName = localStorage.getItem(storageKey) || defaultTheme
-      const isSystem = enableSystem && themeName === 'system'
+      const isSystem = enableSystem && themeName === "system"
       const theme = isSystem ? getSystemTheme() : themeName
       updateDOM(theme)
     } catch (e) {
       //
     }
   }
-}
+}`
