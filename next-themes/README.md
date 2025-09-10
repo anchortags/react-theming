@@ -1,11 +1,15 @@
-# next-themes ![next-themes minzip package size](https://img.shields.io/bundlephobia/minzip/next-themes) [![Version](https://img.shields.io/npm/v/next-themes.svg?colorB=green)](https://www.npmjs.com/package/next-themes)
+# react-theming
+
+> Fork of `next-themes` ![next-themes minzip package size](https://img.shields.io/bundlephobia/minzip/next-themes) [![Version](https://img.shields.io/npm/v/next-themes.svg?colorB=green)](https://www.npmjs.com/package/next-themes)
+>
+> IMPORTANT: The rest of the README is NOT correct and is for the original `next-themes`. For now, the easiest is to copy the files from the `next-themes/src` directory into your own project.
 
 An abstraction for themes in your React app.
 
 - ✅ Perfect dark mode in 2 lines of code
 - ✅ System setting with prefers-color-scheme
 - ✅ Themed browser UI with color-scheme
-- ✅ Support for Next.js 13 `appDir`
+- ✅ Support for Tanstack Start/Router
 - ✅ No flash on load (both SSR and SSG)
 - ✅ Sync theme across tabs and windows
 - ✅ Disable flashing when changing themes
