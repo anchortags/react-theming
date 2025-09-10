@@ -1,4 +1,4 @@
-import * as React from 'react'
+import type * as React from "react"
 
 interface ValueObject {
   [themeName: string]: string
@@ -11,6 +11,7 @@ interface ScriptProps
     React.ScriptHTMLAttributes<HTMLScriptElement>,
     HTMLScriptElement
   > {
+  // biome-ignore lint/suspicious/noExplicitAny: Really anything
   [dataAttribute: DataAttribute]: any
 }
 
@@ -26,10 +27,10 @@ export interface UseThemeProps {
   /** If `enableSystem` is true and the active theme is "system", this returns whether the system preference resolved to "dark" or "light". Otherwise, identical to `theme` */
   resolvedTheme?: string | undefined
   /** If enableSystem is true, returns the System theme preference ("dark" or "light"), regardless what the active theme is */
-  systemTheme?: 'dark' | 'light' | undefined
+  systemTheme?: "dark" | "light" | undefined
 }
 
-export type Attribute = DataAttribute | 'class'
+export type Attribute = DataAttribute | "class"
 
 export interface ThemeProviderProps extends React.PropsWithChildren<unknown> {
   /** List of all available theme names */
